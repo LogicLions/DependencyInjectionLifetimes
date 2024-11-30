@@ -1,3 +1,6 @@
+using DependencyInjectionLifetimesUsingMVC.Services;
+using DependencyInjectionLifetimesUsingMVC.Services.Interfaces;
+
 namespace DependencyInjectionLifetimesUsingMVC
 {
     public class Program
@@ -8,6 +11,9 @@ namespace DependencyInjectionLifetimesUsingMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddTransient<ITransient, TransientService>();
+            builder.Services.AddScoped<IScoped, ScopedService>();
+            builder.Services.AddSingleton<ISingleton, SingletonService>();
 
             var app = builder.Build();
 
